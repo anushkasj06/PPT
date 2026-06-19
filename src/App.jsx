@@ -6,7 +6,7 @@ import {
   FileText, Code, Database, Server, AlertTriangle, Target,
   Cpu, Layers, HeartHandshake, Banknote, ShieldCheck, Activity,
   GitMerge, Compass, LineChart, Sparkles, BookOpen, 
-  MonitorSmartphone, ServerCog, Bot, Puzzle // newly added tech icons
+  MonitorSmartphone, ServerCog, Bot, Puzzle, Calculator
 } from "lucide-react";
 
 // --- Animation Variants ---
@@ -102,6 +102,10 @@ function Slide1Title() {
       <motion.div variants={slideInRight} className="w-[60%] h-full bg-[#162340] p-16 flex flex-col justify-center relative">
         <div className="absolute top-0 left-0 w-full h-2 bg-[#E8671A]"></div>
         
+        <div className="flex items-center gap-4 mb-8">
+          <span className="bg-[#E8671A] text-white px-5 py-2 rounded text-base font-bold tracking-wider">TEAM GROUP 33</span>
+          <span className="border border-[#3A5080] text-[#A0BAE0] bg-[#243457] px-5 py-2 rounded text-base">Problem Statement: PS-EDU-07</span>
+        </div>
 
         <motion.h1 variants={itemVariants} className="text-6xl font-serif font-bold text-white leading-tight mb-2">
           Personalized Career
@@ -480,29 +484,67 @@ function Slide7Business() {
       </div>
 
       <div className="flex w-full pt-32 px-12 gap-8 pb-8 h-full">
-        {/* Left: Business Model */}
-        <motion.div variants={slideInRight} className="w-1/2 flex flex-col h-full custom-scrollbar overflow-y-auto pr-4">
+        {/* Left: Business Model & Costs */}
+        <motion.div variants={slideInRight} className="w-1/2 flex flex-col h-full pr-4">
           <h3 className="text-[#F5832A] font-bold tracking-widest text-[15px] mb-4 flex items-center gap-2"><Banknote className="w-5 h-5"/> REVENUE STREAMS</h3>
-          <div className="space-y-4 mb-6">
+          <div className="space-y-4 mb-4 flex-1">
             {[
-              { t: "1. B2C Freemium", d: "₹499–999/mo premium for full adaptive engine, coaching, and mock interviews (Targeting 50M+ students)." },
+              { t: "1. B2C Freemium", d: "Rs. 499–999/mo premium for full adaptive engine, coaching, and mock interviews." },
               { t: "2. B2B Institution", d: "Annual per-seat license. Includes teacher dashboards, CMS, and admin controls." },
               { t: "3. API / SaaS Licensing", d: "Highest-margin. Licenses core intelligence APIs to 3rd party EdTechs." },
               { t: "4. Placement Partners", d: "Referral/success fees from Adzuna/Naukri for hired students." },
-              { t: "5. Data Intelligence", d: "Future monetization of anonymized skill-trend data for HR/Govt." }
+              
             ].map((s, i) => (
-              <div key={i} className="bg-[#243457] border border-[#3A5080] p-4 rounded-lg">
-                <h4 className="text-white font-bold text-[15px] mb-1">{s.t}</h4>
-                <p className="text-[#A0BAE0] text-[15px] leading-relaxed">{s.d}</p>
+              <div key={i} className="bg-[#243457] border border-[#3A5080] p-3 rounded-lg">
+                <h4 className="text-white font-bold text-[14px] mb-1">{s.t}</h4>
+                <p className="text-[#A0BAE0] text-[13px] leading-relaxed">{s.d}</p>
               </div>
             ))}
           </div>
 
-          <h3 className="text-[#F5832A] font-bold tracking-widest text-[15px] mb-3 mt-2">COST STRUCTURE</h3>
-          <div className="bg-[#162340] border border-[#3A5080] p-4 rounded-lg text-[15px] text-[#A0BAE0] space-y-2">
-            <p>• <b>Cloud (Mongo/Hosting):</b> Moderate fixed cost.</p>
-            <p>• <b>LLM APIs:</b> Variable, heavily mitigated by Ollama local inference.</p>
-            <p>• <b>Engineering/Sales:</b> Primary op cost; low CAC for B2B.</p>
+          {/* ---> NEW COMPACT VERTICAL COST ESTIMATION BLOCK <--- */}
+          <h3 className="text-[#F5832A] font-bold tracking-widest text-[15px] mb-3 mt-4 flex items-center gap-2"><Calculator className="w-5 h-5"/> MONTHLY INFRASTRUCTURE COST</h3>
+          <div className="bg-[#162340] border border-[#3A5080] p-4 rounded-lg shadow-inner flex flex-col">
+              
+              {/* Individual Line Items */}
+              <div className="grid grid-cols-2 gap-x-6 gap-y-3 mb-4 border-b border-[#3A5080] pb-4">
+                  <div className="flex justify-between items-center">
+                      <div><div className="text-[13px] font-bold text-white">Backend Server</div><div className="text-[11px] text-[#A0BAE0]">Render/AWS</div></div>
+                      <div className="text-[13px] font-mono text-[#E8671A] font-bold">₹3k–8k</div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                      <div><div className="text-[13px] font-bold text-white">MongoDB Atlas</div><div className="text-[11px] text-[#A0BAE0]">Database</div></div>
+                      <div className="text-[13px] font-mono text-[#E8671A] font-bold">₹2k–5k</div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                      <div><div className="text-[13px] font-bold text-white">LLM APIs</div><div className="text-[11px] text-[#A0BAE0]">Gemini + Groq</div></div>
+                      <div className="text-[13px] font-mono text-[#E8671A] font-bold">₹5k–25k</div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                      <div><div className="text-[13px] font-bold text-white">Vapi AI Interviews</div><div className="text-[11px] text-[#A0BAE0]">₹2–5/min</div></div>
+                      <div className="text-[13px] font-mono text-[#E8671A] font-bold">₹10k–30k</div>
+                  </div>
+                  {/* <div className="flex justify-between items-center col-span-2 mt-1">
+                      <div><div className="text-[13px] font-bold text-white">Storage</div><div className="text-[11px] text-[#A0BAE0]">Files/Assets</div></div>
+                      <div className="text-[13px] font-mono text-[#E8671A] font-bold">₹1k–3k</div>
+                  </div> */}
+              </div>
+
+              {/* Totals Section */}
+              <div className="flex justify-between items-center bg-[#E8671A]/10 p-3 rounded border border-[#E8671A]/30">
+                  <div>
+                      <div className="text-[11px] text-[#F5832A] font-bold uppercase tracking-wider mb-1">Pilot Stage (Total)</div>
+                      <div className="text-[18px] font-bold text-white font-mono">₹20k–50k<span className="text-xs text-[#A0BAE0]">/mo</span></div>
+                  </div>
+                  <div className="text-right">
+                      <div className="text-[11px] text-[#F5832A] font-bold uppercase tracking-wider mb-1">At Scale (50k users)</div>
+                      <div className="text-[18px] font-bold text-white font-mono">₹2L–5L<span className="text-xs text-[#A0BAE0]">/mo</span></div>
+                  </div>
+              </div>
+
+              <div className="text-[12px] text-[#A0BAE0] mt-3 text-center italic">
+                  *Manageable at scale: <b>Ollama</b> handles local inference & <b>Microservices</b> scale independently.
+              </div>
           </div>
         </motion.div>
 
